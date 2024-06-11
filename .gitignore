@@ -44,3 +44,4 @@ out/
 /model-api/fashion-product-images-small.csv
 /boot-publisher/src/main/resources/products/fashion-product-images-small.csv
 /model-api/.venv/
+/model-api/__pycache__/
