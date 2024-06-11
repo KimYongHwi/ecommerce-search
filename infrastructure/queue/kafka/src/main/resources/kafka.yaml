@@ -1,0 +1,12 @@
+---
+spring:
+  config:
+    activate:
+      on-profile: local,test
+
+  kafka:
+    bootstrap-servers: localhost:29092
+    consumer:
+      enable-auto-commit: true
+    topics:
+      products: products
