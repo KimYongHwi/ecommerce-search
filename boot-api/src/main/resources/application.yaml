@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: ecommerce-search-api
+  profiles:
+    active: local
+  config:
+    import:
+      - kafka.yaml
