@@ -7,7 +7,6 @@ bootJar.enabled = false
 jar.enabled = true
 
 dependencies {
-    implementation(project(":domain"))
     api("org.springframework.kafka:spring-kafka")
     testImplementation("org.springframework.kafka:spring-kafka-test")
 }
