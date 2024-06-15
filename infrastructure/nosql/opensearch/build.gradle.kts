@@ -7,5 +7,5 @@ bootJar.enabled = false
 jar.enabled = true
 
 dependencies {
-    implementation("org.opensearch.client:spring-data-opensearch:1.5.0")
+    api("org.opensearch.client:spring-data-opensearch:1.5.0")
 }
