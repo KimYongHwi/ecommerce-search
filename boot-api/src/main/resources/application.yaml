@@ -6,3 +6,7 @@ spring:
   config:
     import:
       - kafka.yaml
+
+feign:
+  url:
+    model-api: 'http://localhost:8000'
