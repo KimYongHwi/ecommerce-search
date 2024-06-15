@@ -8,4 +8,8 @@ opensearch:
   host: localhost
   port: 9200
   schema: http
+  index:
+    products:
+      name: products
+      alias: products
 

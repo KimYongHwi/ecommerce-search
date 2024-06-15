@@ -1,7 +1,9 @@
 package kyh.ecommerce.search.document
 
 import org.springframework.data.annotation.Id
+import org.springframework.data.elasticsearch.annotations.Document
 
+@Document(indexName = "products")
 data class ProductDocument(
     @Id
     val productNo: Long,
@@ -25,4 +27,8 @@ data class ProductDocument(
     val productDisplayName: String,
 
     val image: String,
+
+    val imageVector: List<Double>?,
+
+    val displayNameVector: List<Double>?
 )
