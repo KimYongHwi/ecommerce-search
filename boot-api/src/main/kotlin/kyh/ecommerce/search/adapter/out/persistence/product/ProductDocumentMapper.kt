@@ -1,4 +1,4 @@
-package kyh.ecommerce.search.adapter.out.persistence.mapper
+package kyh.ecommerce.search.adapter.out.persistence.product
 
 import kyh.ecommerce.search.adapter.out.client.dto.GetFeaturesResponse
 import kyh.ecommerce.search.document.ProductDocument

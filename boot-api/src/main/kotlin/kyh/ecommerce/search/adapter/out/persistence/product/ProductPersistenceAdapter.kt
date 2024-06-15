@@ -1,9 +1,8 @@
-package kyh.ecommerce.search.adapter.out.persistence
+package kyh.ecommerce.search.adapter.out.persistence.product
 
 import kyh.ecommerce.search.adapter.out.client.ModelApiClient
 import kyh.ecommerce.search.adapter.out.client.dto.GetFeaturesRequest
-import kyh.ecommerce.search.adapter.out.persistence.mapper.ProductDocumentMapper
-import kyh.ecommerce.search.application.port.StoreProductPort
+import kyh.ecommerce.search.application.port.StorePort
 import kyh.ecommerce.search.domain.Product
 import org.opensearch.action.bulk.BulkRequest
 import org.opensearch.action.index.IndexRequest
@@ -20,7 +19,7 @@ class ProductPersistenceAdapter(
     val openSearchClient: RestHighLevelClient,
     @Value("\${opensearch.index.products.name}")
     val indexName: String
-) : StoreProductPort {
+) : StorePort {
     override fun save(products: List<Product>) {
         val response = modelApiClient.getFeatures(
             GetFeaturesRequest(
