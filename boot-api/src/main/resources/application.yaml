@@ -6,6 +6,7 @@ spring:
   config:
     import:
       - kafka.yaml
+      - opensearch.yaml
 
 feign:
   url:
