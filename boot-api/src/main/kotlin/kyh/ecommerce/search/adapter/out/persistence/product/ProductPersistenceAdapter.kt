@@ -3,12 +3,12 @@ package kyh.ecommerce.search.adapter.out.persistence.product
 import kyh.ecommerce.search.adapter.out.client.ModelApiClient
 import kyh.ecommerce.search.adapter.out.client.dto.GetFeaturesRequest
 import kyh.ecommerce.search.application.port.StorePort
+import kyh.ecommerce.search.domain.Feature
 import kyh.ecommerce.search.domain.Product
-import org.opensearch.action.bulk.BulkRequest
-import org.opensearch.action.index.IndexRequest
-import org.opensearch.action.support.WriteRequest
-import org.opensearch.client.RequestOptions
-import org.opensearch.client.RestHighLevelClient
+import org.opensearch.client.opensearch.OpenSearchClient
+import org.opensearch.client.opensearch._types.Refresh
+import org.opensearch.client.opensearch.core.bulk.BulkOperation
+import org.opensearch.client.opensearch.core.bulk.IndexOperation
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Repository
 
@@ -16,7 +16,7 @@ import org.springframework.stereotype.Repository
 @Repository
 class ProductPersistenceAdapter(
     val modelApiClient: ModelApiClient,
-    val openSearchClient: RestHighLevelClient,
+    val openSearchClient: OpenSearchClient,
     @Value("\${opensearch.index.products.name}")
     val indexName: String
 ) : StorePort {
@@ -29,14 +29,21 @@ class ProductPersistenceAdapter(
             )
         )
 
-        val indexRequests = products
+        val bulkOps = products
             .map { ProductDocumentMapper.toDocument(it, response) }
             .map {
-                IndexRequest(indexName)
-                    .source(it)
-                    .setRefreshPolicy(WriteRequest.RefreshPolicy.IMMEDIATE)
+                BulkOperation.Builder().index(
+                    IndexOperation.of { io ->
+                        io.index(indexName).document(it)
+                    }
+                ).build()
             }
 
-        openSearchClient.bulk(BulkRequest().add(indexRequests), RequestOptions.DEFAULT)
+        openSearchClient.bulk(
+            org.opensearch.client.opensearch.core.BulkRequest.Builder()
+                .index(indexName)
+                .operations(bulkOps)
+                .refresh(Refresh.True).build()
+        )
     }
 }

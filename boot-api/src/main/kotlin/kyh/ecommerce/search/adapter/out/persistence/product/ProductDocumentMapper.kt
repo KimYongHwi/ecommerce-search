@@ -19,8 +19,10 @@ class ProductDocumentMapper {
                 product.usage,
                 product.productDisplayName,
                 product.image,
-                response.featureMap[product.id]?.imageFeatures,
-                response.featureMap[product.id]?.textFeatures
+                null,
+                null
+//                response.featureMap[product.id]?.imageFeatures,
+//                response.featureMap[product.id]?.textFeatures
             )
         }
     }

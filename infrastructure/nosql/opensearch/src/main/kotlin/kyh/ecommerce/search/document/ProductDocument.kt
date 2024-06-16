@@ -1,11 +1,6 @@
 package kyh.ecommerce.search.document
 
-import org.springframework.data.annotation.Id
-import org.springframework.data.elasticsearch.annotations.Document
-
-@Document(indexName = "products")
 data class ProductDocument(
-    @Id
     val productNo: Long,
 
     val gender: String,

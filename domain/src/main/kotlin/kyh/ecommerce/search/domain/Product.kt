@@ -1,4 +1,5 @@
 package kyh.ecommerce.search.domain
+
 data class Product(
     val id: Long,
     val gender: String,

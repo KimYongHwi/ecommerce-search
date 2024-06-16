@@ -7,9 +7,9 @@ import org.springframework.stereotype.Service
 
 @Service
 class StoreService(
-    val storeProductPort: StorePort
+    val storePort: StorePort
 ): StoreUseCase {
     override fun save(products: List<Product>) {
-        storeProductPort.save(products)
+        storePort.save(products)
     }
 }
