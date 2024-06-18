@@ -21,7 +21,7 @@ data class ProductDocument(
 
     val productDisplayName: String,
 
-    val image: Byte,
+    val image: String,
 
     val imageVector: List<Double>?,
 

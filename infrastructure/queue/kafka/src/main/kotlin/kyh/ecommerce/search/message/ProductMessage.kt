@@ -11,5 +11,5 @@ data class ProductMessage(
     val year: String,
     val usage: String,
     val productDisplayName: String,
-    val image: Byte
+    val image: String
 )

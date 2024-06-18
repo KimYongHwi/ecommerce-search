@@ -6,7 +6,10 @@ import kyh.ecommerce.search.domain.Product
 
 class ProductDocumentMapper {
     companion object {
-        fun toDocument(product: Product, response: GetFeaturesResponse): ProductDocument {
+        fun toDocument(
+            product: Product,
+            response: List<GetFeaturesResponse.Feature>
+        ): ProductDocument {
             return ProductDocument(
                 product.id,
                 product.gender,
@@ -19,10 +22,8 @@ class ProductDocumentMapper {
                 product.usage,
                 product.productDisplayName,
                 product.image,
-                null,
-                null
-//                response.featureMap[product.id]?.imageFeatures,
-//                response.featureMap[product.id]?.textFeatures
+                response.find { it.itemId == product.id }?.imageFeatures,
+                response.find { it.itemId == product.id }?.textFeatures,
             )
         }
     }
