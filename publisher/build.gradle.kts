@@ -10,5 +10,5 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":infrastructure:queue:kafka"))
 
-    implementation("com.opencsv:opencsv:5.5.2")
+    implementation("com.github.doyaaaaaken:kotlin-csv:1.9.3")
 }

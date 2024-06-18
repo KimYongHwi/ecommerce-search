@@ -1,9 +1,8 @@
 package kyh.ecommerce.search
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import com.opencsv.CSVReaderBuilder
+import com.github.doyaaaaaken.kotlincsv.dsl.csvReader
 import java.io.FileNotFoundException
-import java.io.InputStreamReader
 import kyh.ecommerce.search.message.ProductMessage
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.ApplicationArguments
@@ -23,27 +22,23 @@ class PublishRunner(
         val inputStream = javaClass.classLoader.getResourceAsStream(filePath)
             ?: throw FileNotFoundException("File not found: $filePath")
 
-        val productMessages = CSVReaderBuilder(InputStreamReader(inputStream))
-            .withSkipLines(1)
-            .build()
-            .readAll()
-            .map { line ->
-                ProductMessage(
-                    id = line[0].toLong(),
-                    gender = line[1].toString(),
-                    mainCategory = line[2].toString(),
-                    subCategory = line[3].toString(),
-                    articleType = line[4].toString(),
-                    baseColor = line[5].toString(),
-                    season = line[6].toString(),
-                    year = line[7].toString(),
-                    usage = line[8].toString(),
-                    productDisplayName = line[9].toString(),
-                    image = line[10].toByte(),
-                )
-            }
+        val messages = csvReader().readAllWithHeader(inputStream).map {
+            ProductMessage(
+                id = it["id"]!!.toLong(),
+                gender = it["gender"]!!.toString(),
+                mainCategory = it["masterCategory"]!!.toString(),
+                subCategory = it["subCategory"]!!.toString(),
+                articleType = it["articleType"]!!.toString(),
+                baseColor = it["baseColour"]!!.toString(),
+                season = it["season"]!!.toString(),
+                year = it["year"]!!.toString(),
+                usage = it["usage"]!!.toString(),
+                productDisplayName = it["productDisplayName"]!!.toString(),
+                image = it["image"]!!.toString(),
+            )
+        }
 
-        productMessages.forEach {
+        messages.forEach {
             kafkaTemplate.send(productsTopic, objectMapper.writeValueAsString(it))
         }
     }
