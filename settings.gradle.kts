@@ -1,8 +1,8 @@
 rootProject.name = "ecommerce-search"
 
 include(
-    "boot-api",
-    "boot-publisher",
+    "api",
+    "publisher",
     "domain",
     "infrastructure",
     "infrastructure:nosql",

@@ -39,7 +39,7 @@ class PublishRunner(
                     year = line[7].toString(),
                     usage = line[8].toString(),
                     productDisplayName = line[9].toString(),
-                    image = line[10].toString(),
+                    image = line[10].toByte(),
                 )
             }
 
