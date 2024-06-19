@@ -2,8 +2,8 @@ package kyh.ecommerce.search.adapter.out.persistence.product
 
 import kyh.ecommerce.search.adapter.out.client.ModelApiClient
 import kyh.ecommerce.search.adapter.out.client.dto.GetFeaturesRequest
-import kyh.ecommerce.search.application.port.StorePort
-import kyh.ecommerce.search.domain.Feature
+import kyh.ecommerce.search.application.port.IndexingPort
+import kyh.ecommerce.search.application.port.SearchPort
 import kyh.ecommerce.search.domain.Product
 import org.opensearch.client.opensearch.OpenSearchClient
 import org.opensearch.client.opensearch._types.Refresh
@@ -14,13 +14,13 @@ import org.springframework.stereotype.Repository
 
 
 @Repository
-class ProductPersistenceAdapter(
+class ProductIndexingAdapter(
     val modelApiClient: ModelApiClient,
     val openSearchClient: OpenSearchClient,
     @Value("\${opensearch.index.products.name}")
     val indexName: String
-) : StorePort {
-    override fun save(products: List<Product>) {
+) : IndexingPort {
+    override fun indexing(products: List<Product>) {
         val response = modelApiClient.getFeatures(
             GetFeaturesRequest(
                 itemIds = products.map { it.id },
