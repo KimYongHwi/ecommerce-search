@@ -13,4 +13,12 @@ class GetFeaturesResponse {
         @JsonProperty("text_features")
         val textFeatures: List<Double>,
     )
+
+    data class TextFeatures(
+        val textFeatures: List<Double>
+    )
+
+    data class ImageFeatures(
+        val textFeatures: List<Double>
+    )
 }

@@ -22,6 +22,7 @@ class ProductDocumentMapper {
                 product.usage,
                 product.productDisplayName,
                 product.image,
+                product.getSearchKeywords(),
                 response.find { it.itemId == product.id }?.imageFeatures,
                 response.find { it.itemId == product.id }?.textFeatures,
             )

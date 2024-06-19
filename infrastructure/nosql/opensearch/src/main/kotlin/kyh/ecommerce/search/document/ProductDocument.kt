@@ -23,6 +23,8 @@ data class ProductDocument(
 
     val image: String,
 
+    val searchKeywords: String,
+
     val imageVector: List<Double>?,
 
     val displayNameVector: List<Double>?
