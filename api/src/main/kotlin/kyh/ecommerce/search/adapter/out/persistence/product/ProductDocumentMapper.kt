@@ -27,5 +27,21 @@ class ProductDocumentMapper {
                 response.find { it.itemId == product.id }?.textFeatures,
             )
         }
+
+        fun ProductDocument.toDomain(): Product {
+            return Product(
+                productNo,
+                gender,
+                mainCategory,
+                subCategory,
+                articleType,
+                baseColor,
+                season,
+                year,
+                usage,
+                productDisplayName,
+                image,
+            )
+        }
     }
 }

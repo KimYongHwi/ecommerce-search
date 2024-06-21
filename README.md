@@ -1,6 +1,7 @@
 # Ecommerce-Search
 - 해당 repository는 상품 정보를 검색하는 전반적인 기능을 담당합니다.
 - 상품 정보는 [ashraq/fashion-product-images-small](https://huggingface.co/datasets/ashraq/fashion-product-images-small)를 사용합니다.
+  - 전체 상품 수는 44,072개 
 
 ## 1. Prerequisites
 - 주피터 노트북을 이용해 상품 정보 관련 CSV 파일을 생성해주세요.
