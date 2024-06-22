@@ -21,11 +21,11 @@ data class ProductDocument(
 
     val productDisplayName: String,
 
-    val image: String,
+    val imageUrl: String,
 
     val searchKeywords: String,
 
-    val imageVector: List<Double>?,
+    val imageFeatures: List<Double>?,
 
-    val displayNameVector: List<Double>?
+    val textFeatures: List<Double>?
 )

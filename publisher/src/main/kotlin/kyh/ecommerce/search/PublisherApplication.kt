@@ -4,8 +4,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class BootPublisherApplication
+class PublisherApplication
 
 fun main(args: Array<String>) {
-    runApplication<BootPublisherApplication>(*args)
+    runApplication<PublisherApplication>(*args)
 }

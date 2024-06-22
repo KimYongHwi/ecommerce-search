@@ -11,7 +11,7 @@ data class Product(
     val year: String,
     val usage: String,
     val productDisplayName: String,
-    val image: String
+    val imageUrl: String
 ) {
     fun getSearchKeywords(): String {
         return "${this.gender} ${this.mainCategory} ${this.subCategory} ${this.articleType} ${this.baseColor} ${this.season} ${this.usage} ${this.productDisplayName}"

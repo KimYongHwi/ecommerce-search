@@ -21,7 +21,7 @@ class ProductDocumentMapper {
                 product.year,
                 product.usage,
                 product.productDisplayName,
-                product.image,
+                product.imageUrl,
                 product.getSearchKeywords(),
                 response.find { it.itemId == product.id }?.imageFeatures,
                 response.find { it.itemId == product.id }?.textFeatures,
@@ -40,7 +40,7 @@ class ProductDocumentMapper {
                 year,
                 usage,
                 productDisplayName,
-                image,
+                imageUrl,
             )
         }
     }

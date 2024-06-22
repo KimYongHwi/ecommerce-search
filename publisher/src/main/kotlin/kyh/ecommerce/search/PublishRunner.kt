@@ -34,7 +34,7 @@ class PublishRunner(
                 year = it["year"]!!.toString(),
                 usage = it["usage"]!!.toString(),
                 productDisplayName = it["productDisplayName"]!!.toString(),
-                image = it["image"]!!.toString(),
+                imageUrl = it["link"]!!.toString(),
             )
         }
 

@@ -8,8 +8,13 @@ import org.springframework.stereotype.Service
 @Service
 class IndexingService(
     val indexingPort: IndexingPort
-): IndexingUseCase {
+) : IndexingUseCase {
+    private val chunkSize = 100
+
     override fun indexing(products: List<Product>) {
-        indexingPort.indexing(products)
+        products.chunked(chunkSize).forEach {
+            indexingPort.indexing(it)
+            Thread.sleep(100)
+        }
     }
 }

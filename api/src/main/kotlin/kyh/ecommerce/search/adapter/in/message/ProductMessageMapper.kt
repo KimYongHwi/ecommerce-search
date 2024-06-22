@@ -17,7 +17,7 @@ class ProductMessageMapper {
                 year,
                 usage,
                 productDisplayName,
-                image
+                imageUrl
             )
         }
     }

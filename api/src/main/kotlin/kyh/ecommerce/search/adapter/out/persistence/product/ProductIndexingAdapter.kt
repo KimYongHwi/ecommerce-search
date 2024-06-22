@@ -24,7 +24,7 @@ class ProductIndexingAdapter(
         val response = modelApiClient.getFeatures(
             ModelApiRequest.GetAllFeaturesRequest(
                 itemIds = products.map { it.id },
-                images = products.map { it.image },
+                imageUrls = products.map { it.imageUrl },
                 texts = products.map { it.getSearchKeywords() }
             )
         )
