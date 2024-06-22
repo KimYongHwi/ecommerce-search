@@ -42,6 +42,8 @@ out/
 /http/http-client.private.env.json
 /model-api/products.ipynb
 /model-api/fashion-product-images-small.csv
+/model-api/images.csv
 /model-api/.venv/
 /model-api/__pycache__/
 /publisher/src/main/resources/products/fashion-product-images-small.csv
+/web/node_modules/
