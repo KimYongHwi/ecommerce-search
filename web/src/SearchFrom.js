@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import TextInput from './TextInput';
+import TextInput from './components/TextInput';
 import axios from 'axios';
 
 function SearchForm({ setProducts, setTotal }) {

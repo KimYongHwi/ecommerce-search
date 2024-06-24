@@ -4,7 +4,6 @@ function ProductList({ products, total }) {
   return (
     <div className='products-container grid grid-cols-2 md:grid-cols-4 gap-4'>
       {products.map((product) => {
-        console.log(product)
         return (
           <div class='max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700'>
             <a href='#'>
