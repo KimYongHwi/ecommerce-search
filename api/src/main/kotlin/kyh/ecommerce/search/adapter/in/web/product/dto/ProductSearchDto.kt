@@ -4,7 +4,7 @@ import kyh.ecommerce.search.domain.Product
 
 class ProductSearchDto {
 
-    data class Request(val keyword: String?, val image: String?)
+    data class Request(val keyword: String, val page: Int, val size: Int)
 
     data class Response(val products: List<Product>, val total: Long)
 }

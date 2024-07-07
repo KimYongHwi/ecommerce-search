@@ -33,7 +33,9 @@ class ProductSearchAdapter(
                 }
         }._toQuery()
 
-        val request = SearchRequest.of { it.index(indexName).query(query) }
+        val request = SearchRequest.of {
+            it.index(indexName).query(query).from(parameter.getFrom()).size(parameter.size)
+        }
         val hits = openSearchClient.search(request, ProductDocument::class.java)
         val products = hits.hits().hits().mapNotNull { it.source()?.toDomain() }
 
