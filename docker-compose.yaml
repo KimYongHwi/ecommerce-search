@@ -34,8 +34,10 @@ services:
       - "OPENSEARCH_JAVA_OPTS=-Xms512m -Xmx512m"
       - "DISABLE_INSTALL_DEMO_CONFIG=true"
       - "DISABLE_SECURITY_PLUGIN=true"
+      - 'path.repo=/usr/share/opensearch/backup'
     volumes:
       - opensearch-data1:/usr/share/opensearch/data
+      - ./opensearch-backup:/usr/share/opensearch/backup
 #      - ./dictionary:/usr/share/opensearch/config/dictionary
     ports:
       - 9200:9200
@@ -46,6 +48,7 @@ services:
       bash -c "./bin/opensearch-plugin list | grep -q analysis-nori
       || ./bin/opensearch-plugin install analysis-nori;
       /usr/share/opensearch/opensearch-docker-entrypoint.sh"
+
 
   opensearch-dashboards:
     image: opensearchproject/opensearch-dashboards:latest
@@ -59,6 +62,17 @@ services:
       - "DISABLE_SECURITY_DASHBOARDS_PLUGIN=true"
     networks:
       - opensearch-net
+
+  redis:
+    image: redis:7.0
+    container_name: redis
+    command: redis-server --port 6379
+    environment:
+      - REDIS_REPLICATION_MODE=master
+      - REDIS_PASSWORD=changeme
+    restart: always
+    ports:
+      - "6379:6379"
 
 volumes:
   opensearch-data1:
