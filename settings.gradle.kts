@@ -2,13 +2,15 @@ rootProject.name = "ecommerce-search"
 
 include(
     "api",
-    "publisher",
     "domain",
     "infrastructure",
+    "infrastructure:cache",
+    "infrastructure:cache:redis",
     "infrastructure:nosql",
     "infrastructure:nosql:opensearch",
     "infrastructure:queue",
     "infrastructure:queue:kafka",
+    "publisher",
 )
 
 pluginManagement {
