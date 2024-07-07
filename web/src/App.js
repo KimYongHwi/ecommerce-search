@@ -10,7 +10,7 @@ function App() {
   return (
     <body>
       <BrowserRouter>
-        <Header setProducts={setProducts} setTotal={setTotal} />
+        <Header />
         <Navbar />
 
         <Routes>
