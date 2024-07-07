@@ -11,3 +11,6 @@ spring:
 feign:
   url:
     model-api: 'http://localhost:8000'
+
+server:
+  port: 8080
