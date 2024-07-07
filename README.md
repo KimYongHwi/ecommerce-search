@@ -118,3 +118,42 @@
   ```
   GET products/_count
   ```
+
+## 3. Api
+1. Api를 실행시켜주세요.
+- `EcommerceSearchApplication` 실행
+
+2. Swagger
+- http://localhost:8080/swagger-ui/index.html
+  
+## 4. Web
+| [ecommerce-template-tailwind-1](https://github.com/fajar7xx/ecommerce-template-tailwind-1) 을 참고해서 개발했습니다.
+
+1. Web을 실행시켜주세요.
+```
+$ cd web
+$ npm run start
+```
+
+2. Main Page
+<img width="1728" alt="스크린샷 2024-07-07 오후 6 06 19" src="https://github.com/KimYongHwi/ecommerce-search/assets/44759868/f8424320-8fa7-466c-a11a-7bbb3b114909">
+
+3. Search Page
+- 상단 search bar에 검색어를 입력해주세요.
+<img width="1727" alt="스크린샷 2024-07-07 오후 6 06 39" src="https://github.com/KimYongHwi/ecommerce-search/assets/44759868/ccaefd0a-8487-4e15-9889-1b2c964b8780">
+
+## 사용 기술
+- model-api: python, FastAPI
+  - embedding
+    - text: [facebook/LASER](https://github.com/facebookresearch/LASER)
+    - image: [patrickjohncyh/fashion-clip](https://github.com/patrickjohncyh/fashion-clip)
+- backend-api: kotlin, Spring boot
+- web: javascript, react.js
+- infra
+  - search engine: opensearch, opensearch dashboard
+  - queue: kafka
+  - cache: redis
+
+## TODO
+- image search
+- 아키텍처
