@@ -1,3 +1,6 @@
+server:
+  port: 8080
+
 spring:
   application:
     name: ecommerce-search-api
@@ -12,5 +15,7 @@ feign:
   url:
     model-api: 'http://localhost:8000'
 
-server:
-  port: 8080
+
+logging:
+  level:
+    tracer: TRACE

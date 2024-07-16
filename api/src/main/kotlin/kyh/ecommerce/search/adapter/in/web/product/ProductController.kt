@@ -1,6 +1,7 @@
 package kyh.ecommerce.search.adapter.`in`.web.product
 
 import kyh.ecommerce.search.adapter.`in`.web.product.dto.ProductSearchDto
+import kyh.ecommerce.search.adapter.`in`.web.product.dto.ProductSearchDtoMapper.Companion.toParam
 import kyh.ecommerce.search.application.usecase.SearchUseCase
 import kyh.ecommerce.search.application.usecase.dto.Parameter
 import org.springframework.web.bind.annotation.GetMapping
@@ -15,9 +16,7 @@ class ProductController(
 
     @GetMapping("/search")
     fun search(request: ProductSearchDto.Request): ProductSearchDto.Response {
-        val result = searchUseCase.search(
-            Parameter.Search(keyword = request.keyword, image = request.image)
-        )
+        val result = searchUseCase.search(request.toParam())
 
         return ProductSearchDto.Response(products = result.products, total = result.total)
     }
