@@ -15,10 +15,12 @@ class GetFeaturesResponse {
     )
 
     data class TextFeatures(
-        val textFeatures: List<Double>
+        @JsonProperty("text_features")
+        val textFeatures: List<Float>,
     )
 
     data class ImageFeatures(
-        val textFeatures: List<Double>
+        @JsonProperty("text_features")
+        val imageFeatures: List<Float>
     )
 }
