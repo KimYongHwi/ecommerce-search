@@ -13,6 +13,7 @@ import org.opensearch.client.opensearch._types.query_dsl.FunctionScoreQuery
 import org.opensearch.client.opensearch._types.query_dsl.HybridQuery
 import org.opensearch.client.opensearch._types.query_dsl.KnnQuery
 import org.opensearch.client.opensearch._types.query_dsl.MatchQuery
+import org.opensearch.client.opensearch._types.query_dsl.Operator
 import org.opensearch.client.opensearch._types.query_dsl.Query
 import org.opensearch.client.opensearch.core.SearchRequest
 import org.opensearch.client.opensearch.core.search.SourceConfig
@@ -36,7 +37,7 @@ class ProductSearchAdapter(
 
         val bQuery = BoolQuery.of { bqBuilder ->
             bqBuilder.must { qBuilder ->
-                qBuilder.match { matchQb -> matchQb.withKeyword(parameter.keyword) }
+                qBuilder.match { matchQb -> matchQb.withKeyword(parameter.keyword).operator(Operator.And) }
             }
         }.toQuery()
 
