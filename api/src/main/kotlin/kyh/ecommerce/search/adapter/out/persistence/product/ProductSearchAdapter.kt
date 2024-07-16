@@ -77,7 +77,7 @@ class ProductSearchAdapter(
     private fun KnnQuery.Builder.withTextFeatures(features: List<Float>) = apply {
         this.field("textFeatures")
             .vector(features.toFloatArray())
-            .k(100)
+            .k(10000)
     }
 
     private fun SourceFilter.Builder.excludeFeatures() = apply {
