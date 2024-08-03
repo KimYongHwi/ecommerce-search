@@ -27,5 +27,7 @@ data class ProductDocument(
 
     val imageFeatures: List<Double>?,
 
-    val textFeatures: List<Double>?
+    val distiluseTextFeatures: List<Double>?,
+
+    val e5TextFeatures: List<Double>?
 )
