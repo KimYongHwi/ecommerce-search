@@ -25,7 +25,8 @@ class ProductIndexingAdapter(
             ModelApiRequest.GetAllFeaturesRequest(
                 itemIds = products.map { it.id },
                 imageUrls = products.map { it.imageUrl },
-                texts = products.map { it.getSearchKeywords() }
+                allTexts = products.map { it.getSearchKeywords() },
+                itemNames = products.map { it.productDisplayName }
             )
         )
 
@@ -41,7 +42,8 @@ class ProductIndexingAdapter(
             BulkRequest.Builder()
                 .index(indexName)
                 .operations(bulkOps)
-                .refresh(Refresh.True).build()
+                .refresh(Refresh.True)
+                .build()
         )
     }
 }
