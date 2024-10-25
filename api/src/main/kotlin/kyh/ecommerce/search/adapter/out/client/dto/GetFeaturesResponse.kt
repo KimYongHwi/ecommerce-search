@@ -10,8 +10,24 @@ class GetFeaturesResponse {
         @JsonProperty("image_features")
         val imageFeatures: List<Double>,
 
-        @JsonProperty("text_features")
-        val textFeatures: List<Double>,
+        @JsonProperty("laser_all_keywords_text_features")
+        val laserAllKeywordsTextFeatures: List<Double>?,
+
+        @JsonProperty("laser_item_names_text_features")
+        val laserItemNamesTextFeatures: List<Double>?,
+
+        @JsonProperty("distiluse_all_keywords_text_features")
+        val distiluseAllKeywordsTextFeatures: List<Double>?,
+
+        @JsonProperty("distiluse_item_names_text_features")
+        val distiluseItemNamesTextFeatures: List<Double>?,
+
+        @JsonProperty("e5_all_keywords_text_features")
+        val e5AllKeywordsTextFeatures: List<Double>?,
+
+        @JsonProperty("e5_item_names_text_features")
+        val e5ItemNamesTextFeatures: List<Double>?,
+
     )
 
     data class TextFeatures(
