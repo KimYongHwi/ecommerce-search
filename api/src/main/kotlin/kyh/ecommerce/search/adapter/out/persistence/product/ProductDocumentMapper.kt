@@ -24,8 +24,12 @@ class ProductDocumentMapper {
                 product.imageUrl,
                 product.getSearchKeywords(),
                 response.find { it.itemId == product.id }?.imageFeatures,
-                response.find { it.itemId == product.id }?.distiluseTextFeatures,
-                response.find { it.itemId == product.id }?.e5TextFeatures,
+                response.find { it.itemId == product.id }?.laserAllKeywordsTextFeatures,
+                response.find { it.itemId == product.id }?.laserItemNamesTextFeatures,
+                response.find { it.itemId == product.id }?.distiluseAllKeywordsTextFeatures,
+                response.find { it.itemId == product.id }?.distiluseItemNamesTextFeatures,
+                response.find { it.itemId == product.id }?.e5AllKeywordsTextFeatures,
+                response.find { it.itemId == product.id }?.e5ItemNamesTextFeatures,
             )
         }
 
