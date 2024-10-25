@@ -9,7 +9,10 @@ class ModelApiRequest {
         val itemIds: List<Long>,
         @JsonProperty("image_urls")
         val imageUrls: List<String>,
-        val texts: List<String>,
+        @JsonProperty("all_texts")
+        val allTexts: List<String>,
+        @JsonProperty("item_names")
+        val itemNames: List<String>,
     )
 
     data class GetImageFeatureRequest(val images: List<String>)
