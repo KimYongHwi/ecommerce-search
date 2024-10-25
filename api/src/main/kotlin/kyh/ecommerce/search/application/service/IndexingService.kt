@@ -14,7 +14,6 @@ class IndexingService(
     override fun indexing(products: List<Product>) {
         products.chunked(chunkSize).forEach {
             indexingPort.indexing(it)
-            Thread.sleep(50)
         }
     }
 }
