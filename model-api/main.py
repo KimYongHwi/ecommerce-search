@@ -18,13 +18,13 @@ accelerator = Accelerator()
 device = accelerator.device
 
 clip_model_id = 'patrickjohncyh/fashion-clip' # 512
-e5_model_id = 'intfloat/multilingual-e5-base' # 1024
-distiluse_model_id = 'sentence-transformers/distiluse-base-multilingual-cased-v1' # 768
+e5_model_id = 'intfloat/multilingual-e5-base' # 768
+distiluse_model_id = 'sentence-transformers/distiluse-base-multilingual-cased-v1' # 512
 
 clip_processor = CLIPProcessor.from_pretrained(clip_model_id)
 clip_model = CLIPModel.from_pretrained(clip_model_id).to(device)
 
-laser_encoder = LaserEncoderPipeline(lang="eng_Latn")
+laser_encoder = LaserEncoderPipeline(lang="eng_Latn") # 1024
 distiluse_text_encoder = SentenceTransformer(distiluse_model_id)
 
 e5_tokenizer = AutoTokenizer.from_pretrained(e5_model_id)
