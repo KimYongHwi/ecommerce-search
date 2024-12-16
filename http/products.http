@@ -1,1 +1,2 @@
-GET http://localhost:8080/products/search?keyword=shirts
+# Search
+GET {{api}}/products/search?keyword=Wallet&page=0&size=10

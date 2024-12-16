@@ -17,6 +17,6 @@ class FeignConfig {
     companion object {
         const val PERIOD = 1_000L
         const val MAX_PERIOD = 2_000L
-        const val MAX_ATTEMPTS = 3
+        const val MAX_ATTEMPTS = 30
     }
 }

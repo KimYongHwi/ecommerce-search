@@ -9,4 +9,3 @@ class EcommerceSearchApplication
 fun main(args: Array<String>) {
     runApplication<EcommerceSearchApplication>(*args)
 }
-

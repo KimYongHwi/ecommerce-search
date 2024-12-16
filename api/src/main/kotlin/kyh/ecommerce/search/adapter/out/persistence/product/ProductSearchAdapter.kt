@@ -42,7 +42,7 @@ class ProductSearchAdapter(
         }.toQuery()
 
         val fsQuery = FunctionScoreQuery.of { fsQb ->
-            fsQb.query { qb -> qb.knn { knnQb -> knnQb.withTextFeatures(response.textFeatures) } }
+            fsQb.query { qb -> qb.knn { knnQb -> knnQb.withTextFeatures(response.distiluseAllKeywordsTextFeatures) } }
         }.toQuery()
 
         val query = Query.Builder()
@@ -76,7 +76,7 @@ class ProductSearchAdapter(
     }
 
     private fun KnnQuery.Builder.withTextFeatures(features: List<Float>) = apply {
-        this.field("textFeatures")
+        this.field("distiluseAllKeywordsTextFeatures")
             .vector(features.toFloatArray())
             .k(10000)
     }

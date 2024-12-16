@@ -25,7 +25,7 @@ class ProductIndexingAdapter(
             ModelApiRequest.GetAllFeaturesRequest(
                 itemIds = products.map { it.id },
                 imageUrls = products.map { it.imageUrl },
-                allTexts = products.map { it.getSearchKeywords() },
+                texts = products.map { it.getSearchKeywords() },
                 itemNames = products.map { it.productDisplayName }
             )
         )

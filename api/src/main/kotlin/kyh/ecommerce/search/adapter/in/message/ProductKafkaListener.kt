@@ -12,12 +12,14 @@ import org.springframework.stereotype.Component
 class ProductKafkaListener(
     val indexingUseCase: IndexingUseCase
 ) {
+
     @KafkaListener(
         topics = ["\${spring.kafka.topics.products}"],
         containerFactory = KafkaConfig.PRODUCT_BATCH_LISTENER
     )
     fun listenProducts(@Payload messages: List<ProductMessage>) {
-        val products = messages.map { it.toDomain() }
-        indexingUseCase.indexing(products)
+        indexingUseCase.indexing(
+            messages.map { it.toDomain() }
+        )
     }
 }
