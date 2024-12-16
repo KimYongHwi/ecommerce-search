@@ -1,4 +1,5 @@
 import ast
+import os
 from concurrent.futures import ThreadPoolExecutor
 from io import BytesIO
 
@@ -34,8 +35,8 @@ e5_model.eval()
 app = FastAPI()
 
 headers = {'User-Agent': "Mozilla/5.0 (X11; Linux i686; rv:64.0) Gecko/20100101 Firefox/64.0"},
-s = requests.Session()
-s.headers = headers
+session = requests.Session()
+session.headers = headers
 
 retries = Retry(
     total=10,
@@ -43,15 +44,15 @@ retries = Retry(
     status_forcelist=[400, 500, 502, 503, 504],
 )
 
-s.mount('http://', HTTPAdapter(max_retries=retries, pool_connections=30))
+session.mount('http://', HTTPAdapter(max_retries=retries, pool_connections=30))
 
 
 def get_image(url):
-    return s.get(url, stream=True).raw
+    return session.get(url, stream=True).raw
 
 
 def get_image_raws(urls):
-    with ThreadPoolExecutor(max_workers=32) as executor:
+    with ThreadPoolExecutor(max_workers=16) as executor:
         return list(executor.map(get_image, urls))
 
 
@@ -72,25 +73,24 @@ def embed(docs: list[str]) -> list[list[float]]:
 
 @app.post("/features")
 async def get_features(param: GetAllFeatures):
-    images = get_image_raws(param.image_urls)
-    images = [Image.open(image).convert("RGB") for image in images]
-    inputs = clip_processor(text=param.all_texts, images=images, return_tensors="pt", padding=True).to(device)
+    images = [Image.open(os.path.join('./data/images', f"{item_id}.jpg")).convert("RGB") for item_id in param.item_ids]
+    inputs = clip_processor(text=param.texts, images=images, return_tensors="pt", padding=True).to(device)
     outputs = clip_model(**inputs)
 
     image_features = outputs.image_embeds.detach().cpu().numpy().tolist()
     laser_all_keywords_text_features = laser_encoder.encode_sentences(param.texts)
     laser_item_names_text_features = laser_encoder.encode_sentences(param.item_names)
-    distiluse_all_keywords_text_features = distiluse_text_encoder.encode(param.all_texts)
+    distiluse_all_keywords_text_features = distiluse_text_encoder.encode(param.texts)
     distiluse_item_names_text_features = distiluse_text_encoder.encode(param.item_names)
-    e5_all_keywords_text_features = embed(param.all_texts)
+    e5_all_keywords_text_features = embed(param.texts)
     e5_item_names_text_features = embed(param.item_names)
 
     return [
         {
             'item_id': item_id,
             'image_features': image_features[idx],
-            'laser_all_keywords_text_features': laser_all_keywords_text_features[idx],
-            'laser_item_names_text_features': laser_item_names_text_features[idx],
+            'laser_all_keywords_text_features': laser_all_keywords_text_features[idx].tolist(),
+            'laser_item_names_text_features': laser_item_names_text_features[idx].tolist(),
             'distiluse_all_keywords_text_features': distiluse_all_keywords_text_features[idx].tolist(),
             'distiluse_item_names_text_features': distiluse_item_names_text_features[idx].tolist(),
             'e5_all_keywords_text_features': e5_all_keywords_text_features[idx].tolist(),
@@ -103,20 +103,20 @@ async def get_features(param: GetAllFeatures):
 @app.post("/text/features")
 async def get_text_features(param: GetTextsFeatures):
     laser_all_keywords_text_features = laser_encoder.encode_sentences(param.texts)
-    laser_item_names_text_features = laser_encoder.encode_sentences(param.item_names)
-    distiluse_all_keywords_text_features = distiluse_text_encoder.encode(param.all_texts)
-    distiluse_item_names_text_features = distiluse_text_encoder.encode(param.item_names)
+    # laser_item_names_text_features = laser_encoder.encode_sentences(param.item_names)
+    distiluse_all_keywords_text_features = distiluse_text_encoder.encode(param.texts)
+    # distiluse_item_names_text_features = distiluse_text_encoder.encode(param.item_names)
     e5_all_text_features = embed(param.texts)
-    e5_item_names_features = embed(param.item_names)
+    # e5_item_names_features = embed(param.item_names)
 
     return [
         {
-            'laser_all_keywords_text_features': laser_all_keywords_text_features[idx],
-            'laser_item_names_text_features': laser_item_names_text_features[idx],
+            'laser_all_keywords_text_features': laser_all_keywords_text_features[idx].tolist(),
+            # 'laser_item_names_text_features': laser_item_names_text_features[idx].tolist(),
             'distiluse_all_keywords_text_features': distiluse_all_keywords_text_features[idx].tolist(),
-            'distiluse_item_names_text_features': distiluse_item_names_text_features[idx].tolist(),
+            # 'distiluse_item_names_text_features': distiluse_item_names_text_features[idx].tolist(),
             'e5_all_text_features': e5_all_text_features[idx].tolist(),
-            'e5_item_names_features': e5_item_names_features[idx].tolist(),
+            # 'e5_item_names_features': e5_item_names_features[idx].tolist(),
         }
         for idx, _ in enumerate(param.texts)
     ]

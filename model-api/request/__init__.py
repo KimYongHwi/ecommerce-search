@@ -7,6 +7,7 @@ class GetAllFeatures(BaseModel):
     item_ids: List[int]
     image_urls: List[str]
     texts: List[str]
+    item_names: List[str]
 
 
 class GetTextsFeatures(BaseModel):
