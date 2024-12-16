@@ -47,8 +47,7 @@ services:
     command: >
       bash -c "./bin/opensearch-plugin list | grep -q analysis-nori
       || ./bin/opensearch-plugin install analysis-nori;
-      /usr/share/opensearch/opensearch-docker-entrypoint.sh"
-
+      /usr/share/opensearch/opensearch-docker-entrypoint.sh -E network.host=0.0.0.0"
 
   opensearch-dashboards:
     image: opensearchproject/opensearch-dashboards:latest
