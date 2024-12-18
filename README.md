@@ -150,7 +150,9 @@ $ npm run start
 
 | 검색어 | laser  | multilingual-e5-base | distiluse-base-multilingual-cased-v1 |
 | -------------| ------------- | ------------- |------------- |
-|protected notebook| Content Cell  | Content Cell  | <img width="787" alt="스크린샷 2024-12-18 오후 6 44 53" src="https://github.com/user-attachments/assets/49e92d93-47c8-45ee-90a6-5716889b5794" /> |
+|protected notebook| <img width="791" alt="laser" src="https://github.com/user-attachments/assets/b97d7fad-11d8-4a3a-8b87-94e0532afe14" />  | Content Cell  | <img width="799" alt="스크린샷 2024-12-19 오전 12 08 41" src="https://github.com/user-attachments/assets/5df70b98-3611-4294-9ecc-8e19d70335e9" /> |
+
+
 
 
 
