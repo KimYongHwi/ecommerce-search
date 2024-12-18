@@ -150,7 +150,8 @@ $ npm run start
 
 | 검색어 | laser  | multilingual-e5-base | distiluse-base-multilingual-cased-v1 |
 | -------------| ------------- | ------------- |------------- |
-|protected notebook| laser  | <img width="1287" alt="e5" src="https://github.com/user-attachments/assets/85568bea-e4b9-4380-b474-13d7ba4c59cf" /> | <img width="1301" alt="얀" src="https://github.com/user-attachments/assets/8955fd2f-699b-47c0-996b-e0416b20e214" /> |
+|protected notebook| <img width="1245" alt="스크린샷 2024-12-19 오전 8 51 56" src="https://github.com/user-attachments/assets/64d70540-0f96-48c5-b994-737c1aa9b7ae" /> | <img width="1287" alt="e5" src="https://github.com/user-attachments/assets/85568bea-e4b9-4380-b474-13d7ba4c59cf" /> | <img width="1301" alt="얀" src="https://github.com/user-attachments/assets/8955fd2f-699b-47c0-996b-e0416b20e214" /> |
+
 
 
 
