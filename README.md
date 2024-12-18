@@ -13,87 +13,91 @@
   $ docker-compose up -d
   ```
 - http://localhost:5601/app/dev_tools#/console 접속 후 `products` index를 만들어주세요.
-    ```
-    PUT products
-    {
-      "mappings": {
-        "properties": {
-          "productNo": {
-            "type": "long"
-          },
-          "productDisplayName": {
-            "type": "text"
-          },
-          "gender": {
-            "type": "text"
-          },
-          "mainCategory": {
-            "type": "text"
-          },
-          "subCategory": {
-            "type": "text"
-          },
-          "articleType": {
-            "type": "text"
-          },
-          "baseColor": {
-            "type": "text"
-          },
-          "season": {
-            "type": "text"
-          },
-          "year": {
-            "type": "date"
-          },
-          "usage": {
-            "type": "text"
-          },
-          "image": {
-            "type": "text",
-            "index": false
-          },
-          "searchKeywords": {
-            "type": "text"
-          },
-          "image_features": {
-            "type": "knn_vector",
-            "dimension": 512,
-            "method": {
-              "name": "hnsw",
-              "space_type": "l2",
-              "engine": "lucene",
-              "parameters": {
-                "ef_construction": 128,
-                "m": 24
-              }
+<details>
+  <summary>mapping</summary>
+  
+  ```
+  PUT products
+  {
+    "mappings": {
+      "properties": {
+        "productNo": {
+          "type": "long"
+        },
+        "productDisplayName": {
+          "type": "text"
+        },
+        "gender": {
+          "type": "text"
+        },
+        "mainCategory": {
+          "type": "text"
+        },
+        "subCategory": {
+          "type": "text"
+        },
+        "articleType": {
+          "type": "text"
+        },
+        "baseColor": {
+          "type": "text"
+        },
+        "season": {
+          "type": "text"
+        },
+        "year": {
+          "type": "date"
+        },
+        "usage": {
+          "type": "text"
+        },
+        "image": {
+          "type": "text",
+          "index": false
+        },
+        "searchKeywords": {
+          "type": "text"
+        },
+        "image_features": {
+          "type": "knn_vector",
+          "dimension": 512,
+          "method": {
+            "name": "hnsw",
+            "space_type": "l2",
+            "engine": "lucene",
+            "parameters": {
+              "ef_construction": 128,
+              "m": 24
             }
-          },
-          "text_features": {
-            "type": "knn_vector",
-            "dimension": 1024,
-            "method": {
-              "name": "hnsw",
-              "space_type": "l2",
-              "engine": "lucene",
-              "parameters": {
-                "ef_construction": 128,
-                "m": 24
-              }
+          }
+        },
+        "text_features": {
+          "type": "knn_vector",
+          "dimension": 1024,
+          "method": {
+            "name": "hnsw",
+            "space_type": "l2",
+            "engine": "lucene",
+            "parameters": {
+              "ef_construction": 128,
+              "m": 24
             }
           }
         }
-      },
-      "settings": {
-        "index": {
-          "knn": true,
-          "knn.algo_param.ef_search": 100,
-          "refresh_interval": "10s",
-          "number_of_replicas": "10",
-          "number_of_shards": "5"
-        }
+      }
+    },
+    "settings": {
+      "index": {
+        "knn": true,
+        "knn.algo_param.ef_search": 100,
+        "refresh_interval": "10s",
+        "number_of_replicas": "10",
+        "number_of_shards": "5"
       }
     }
-    ```
+  }
+  ```
+</details>
 
 
 ## 2. 색인
