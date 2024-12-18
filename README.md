@@ -129,6 +129,10 @@
 
 2. Swagger
 - http://localhost:8080/swagger-ui/index.html
+
+## 4. System 구조
+![diagram-export-2024 -12 -18 -오후-6_01_28](https://github.com/user-attachments/assets/a9b8c6be-1f54-408e-97db-761282304160)
+
   
 ## 4. Web
 | [ecommerce-template-tailwind-1](https://github.com/fajar7xx/ecommerce-template-tailwind-1) 을 참고해서 개발했습니다.
@@ -160,4 +164,3 @@ $ npm run start
 
 ## TODO
 - image search
-- 아키텍처
