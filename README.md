@@ -156,12 +156,13 @@ $ npm run start
 ## 사용 기술
 - model-api: python, FastAPI
   - embedding
-    - text: [facebook/LASER](https://github.com/facebookresearch/LASER)
-    - image: [patrickjohncyh/fashion-clip](https://github.com/patrickjohncyh/fashion-clip)
+    - [facebook/LASER](https://github.com/facebookresearch/LASER)
+    - multilingual-e5-base
+    - distiluse-base-multilingual-cased-v1
 - backend-api: kotlin, Spring boot
 - web: javascript, react.js
 - infra
-  - search engine: opensearch, opensearch dashboard
+  - search engine: opensearch
   - queue: kafka
   - cache: redis
 
