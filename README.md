@@ -1,5 +1,5 @@
 # Ecommerce-Search
-- 해당 repository는 상품 정보를 검색하는 전반적인 기능을 담당합니다.
+- Semantic 검색을 위한 검색 시스템 토이 프로젝트
 
 ## 아키텍처
 ![diagram-export-2024 -12 -18 -오후-6_01_28](https://github.com/user-attachments/assets/a9b8c6be-1f54-408e-97db-761282304160)
