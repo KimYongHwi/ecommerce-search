@@ -145,10 +145,6 @@ $ npm run start
 2. Main Page
 <img width="1728" alt="스크린샷 2024-07-07 오후 6 06 19" src="https://github.com/KimYongHwi/ecommerce-search/assets/44759868/f8424320-8fa7-466c-a11a-7bbb3b114909">
 
-3. Search Page
-- 상단 search bar에 검색어를 입력해주세요.
-<img width="1727" alt="스크린샷 2024-07-07 오후 6 06 39" src="https://github.com/KimYongHwi/ecommerce-search/assets/44759868/ccaefd0a-8487-4e15-9889-1b2c964b8780">
-
 
 ## Embedding 모델 비교
 
