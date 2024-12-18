@@ -1,6 +1,9 @@
 # Ecommerce-Search
 - 해당 repository는 상품 정보를 검색하는 전반적인 기능을 담당합니다.
 
+## 아키텍처
+![diagram-export-2024 -12 -18 -오후-6_01_28](https://github.com/user-attachments/assets/a9b8c6be-1f54-408e-97db-761282304160)
+
 ## 1. Prerequisites
 - 상품 정보는 [ashraq/fashion-product-images-small](https://huggingface.co/datasets/ashraq/fashion-product-images-small)를 사용합니다.
 - 상품의 이미지 정보는 [fashion-product-images-dataset의 images.csv](https://www.kaggle.com/datasets/paramaggarwal/fashion-product-images-dataset?resource=download)을 사용합니다.
@@ -129,10 +132,6 @@
 
 2. Swagger
 - http://localhost:8080/swagger-ui/index.html
-
-## 4. System 구조
-![diagram-export-2024 -12 -18 -오후-6_01_28](https://github.com/user-attachments/assets/a9b8c6be-1f54-408e-97db-761282304160)
-
   
 ## 4. Web
 | [ecommerce-template-tailwind-1](https://github.com/fajar7xx/ecommerce-template-tailwind-1) 을 참고해서 개발했습니다.
