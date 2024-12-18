@@ -158,8 +158,8 @@ $ npm run start
 - model-api: python, FastAPI
   - embedding
     - [facebook/LASER](https://github.com/facebookresearch/LASER)
-    - multilingual-e5-base
-    - distiluse-base-multilingual-cased-v1
+    - [multilingual-e5-base](https://huggingface.co/intfloat/multilingual-e5-base)
+    - [distiluse-base-multilingual-cased-v1](https://huggingface.co/sentence-transformers/distiluse-base-multilingual-cased-v1)
 - backend-api: kotlin, Spring boot
 - web: javascript, react.js
 - infra
