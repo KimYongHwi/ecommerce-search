@@ -149,6 +149,14 @@ $ npm run start
 - 상단 search bar에 검색어를 입력해주세요.
 <img width="1727" alt="스크린샷 2024-07-07 오후 6 06 39" src="https://github.com/KimYongHwi/ecommerce-search/assets/44759868/ccaefd0a-8487-4e15-9889-1b2c964b8780">
 
+
+## Embedding 모델 비교
+
+| 검색어 | laser  | multilingual-e5-base | distiluse-base-multilingual-cased-v1 |
+| -------------| ------------- | ------------- |------------- |
+|protected notebook| Content Cell  | Content Cell  | Content Cell |
+
+
 ## 사용 기술
 - model-api: python, FastAPI
   - embedding
